@@ -47,3 +47,33 @@ button:hover {
     margin-bottom: 10px;
     text-align: center;
 }
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.student-table th, .student-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.student-table th {
+    background-color: #f8f9fa;
+}
+
+.btn-edit {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-delete {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    text-decoration: underline;
+}
