@@ -11,7 +11,7 @@ $total = $countStmt->fetchColumn();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduManager - Gestion des Étudiants</title>
+    <title>Gestion des Étudiants</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -23,10 +23,10 @@ $total = $countStmt->fetchColumn();
 
         <section>
             <form id="studentForm" action="traitement.php" method="POST" class="form-grid">
-                <input type="text" name="nom" id="nom" placeholder="Nom de l'étudiant" required>
-                <input type="text" name="prenom" id="prenom" placeholder="Prénom de l'étudiant" required>
+                <input type="text" name="nom" id="nom" placeholder="Nom de l'étudiant">
+                <input type="text" name="prenom" id="prenom" placeholder="Prénom de l'étudiant" >
                 
-                <select name="filiere_id" id="filiere" required>
+                <select name="filiere_id" id="filiere" >
                     <option value="">-- Choisir une filière --</option>
                     <?php
                     $query = $pdo->query("SELECT * FROM filieres ORDER BY nom ASC");

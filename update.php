@@ -1,12 +1,24 @@
 <?php
+// 1. Connexion à la base de données
 include 'db.php';
 
-// Récupération de l'étudiant
-if (isset($_GET['id'])) {
+// 2. Initialisation de la variable pour éviter l'erreur "Undefined"
+$etudiant = null;
+
+// 3. Récupération de l'ID via l'URL
+if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
+    
+    // Requête pour récupérer les données de l'étudiant
     $stmt = $pdo->prepare("SELECT * FROM etudiants WHERE id = ?");
     $stmt->execute([$id]);
     $etudiant = $stmt->fetch();
+}
+
+// 4. Si l'étudiant n'existe pas, on redirige vers l'accueil
+if (!$etudiant) {
+    header('Location: index.php');
+    exit();
 }
 ?>
 
@@ -18,7 +30,6 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Centrage spécifique pour la page de modification */
         body {
             display: flex;
             align-items: center;
@@ -35,27 +46,10 @@ if (isset($_GET['id'])) {
             width: 100%;
             max-width: 500px;
         }
-        .form-update {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
+        .form-update { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        label { font-size: 0.85rem; font-weight: 600; color: var(--secondary); }
+        .btn-group { display: flex; gap: 10px; margin-top: 10px; }
         .btn-cancel {
             flex: 1;
             text-align: center;
@@ -65,19 +59,17 @@ if (isset($_GET['id'])) {
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: 0.3s;
         }
-        .btn-cancel:hover { background: #e0e0e0; }
     </style>
 </head>
 <body>
 
     <div class="edit-card">
         <h1 style="text-align: center; margin-bottom: 10px;">Modifier l'Étudiant</h1>
-        <p style="text-align: center; color: var(--secondary); font-size: 0.9rem;">Mettez à jour les informations de l'élève ci-dessous.</p>
+        <p style="text-align: center; color: var(--secondary); font-size: 0.9rem;">Mettez à jour les informations ci-dessous.</p>
 
-        <form action="traitement_update.php" method="POST" class="form-update">
-            <!-- Champ caché pour l'ID -->
+        <form action="traitement.php" method="POST" class="form-update">
+            <!-- Champ caché très important pour savoir quel étudiant modifier -->
             <input type="hidden" name="id" value="<?= $etudiant['id'] ?>">
 
             <div class="form-group">
