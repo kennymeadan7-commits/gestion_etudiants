@@ -1,116 +1,118 @@
 :root {
-    --primary-color: #4a90e2;
-    --success-color: #2ecc71;
-    --danger-color: #e74c3c;
-    --bg-color: #f0f2f5;
-    --text-color: #333;
+    --primary: #4361ee;
+    --primary-hover: #374fc7;
+    --secondary: #8e9aaf;
+    --success: #2ecc71;
+    --danger: #ef233c;
+    --dark: #2b2d42;
+    --light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #f0f4f8;
+    color: var(--dark);
     margin: 0;
+    padding: 0;
+}
+
+/* Barre de Navigation Supérieure */
+.top-nav {
+    background: var(--white);
+    padding: 15px 50px;
     display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-}
-
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 800px;
-}
-
-h1, h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
-}
-
-/* Style du Formulaire */
-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     margin-bottom: 40px;
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
 }
 
-form input, form select, form button {
-    padding: 12px;
-    border: 1px solid #ddd;
+.user-info { font-weight: 500; color: var(--secondary); }
+.user-info strong { color: var(--primary); }
+.logout-btn {
+    background: var(--danger);
+    color: white;
+    padding: 8px 16px;
     border-radius: 6px;
-    font-size: 14px;
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: 0.3s;
 }
 
-form button {
-    grid-column: span 2;
-    background-color: var(--primary-color);
+/* Conteneur Principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
+
+h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 30px; text-align: center; }
+
+/* Formulaire Stylisé */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    background: var(--light);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+input, select {
+    padding: 12px 15px;
+    border: 1px solid #d1d9e6;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus { border-color: var(--primary); }
+
+.btn-add {
+    grid-column: span 3;
+    background: var(--primary);
     color: white;
     border: none;
-    font-weight: bold;
-    text-transform: uppercase;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
-form button:hover {
-    background-color: #357abd;
-}
+.btn-add:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-/* Style du Tableau */
+/* Table Moderne */
 .student-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }
 
 .student-table th {
-    background-color: #f8f9fa;
-    color: #7f8c8d;
+    color: var(--secondary);
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 15px;
-    border-bottom: 2px solid #eee;
+    font-size: 0.75rem;
+    padding: 10px 20px;
+    text-align: left;
 }
 
-.student-table td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    text-align: center;
+.student-table tr td {
+    background: var(--white);
+    padding: 15px 20px;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
 }
 
-.student-table tr:hover {
-    background-color: #fcfcfc;
-}
+.student-table tr td:first-child { border-left: 1px solid #f1f1f1; border-radius: 10px 0 0 10px; }
+.student-table tr td:last-child { border-right: 1px solid #f1f1f1; border-radius: 0 10px 10px 0; }
 
-/* Boutons d'action */
-.btn-edit {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    margin-right: 15px;
-}
-
-.btn-delete {
-    color: var(--danger-color);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.btn-edit:hover, .btn-delete:hover {
-    opacity: 0.7;
-}
-
-#error-message {
-    grid-column: span 2;
-    text-align: center;
-    font-weight: bold;
-}
+.btn-edit { color: var(--primary); text-decoration: none; font-weight: 600; margin-right: 10px; }
+.btn-delete { color: var(--danger); text-decoration: none; font-weight: 600; }

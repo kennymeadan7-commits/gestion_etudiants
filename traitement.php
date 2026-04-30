@@ -1,5 +1,4 @@
 <?php
-// Inclusion de la connexion à la base de données [cite: 67]
 include 'db.php';
 
 // Vérification que les données ont bien été envoyées via POST
