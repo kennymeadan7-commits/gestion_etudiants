@@ -68,7 +68,7 @@ if (!$etudiant) {
         <h1 style="text-align: center; margin-bottom: 10px;">Modifier l'Étudiant</h1>
         <p style="text-align: center; color: var(--secondary); font-size: 0.9rem;">Mettez à jour les informations ci-dessous.</p>
 
-        <form action="traitement.php" method="POST" class="form-update">
+        <form action="traitement_update.php" method="POST" class="form-update">
             <!-- Champ caché très important pour savoir quel étudiant modifier -->
             <input type="hidden" name="id" value="<?= $etudiant['id'] ?>">
 
